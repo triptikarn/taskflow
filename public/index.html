@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Task Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>TaskFlow</h1>
+    <div id="userBar" class="user-bar hidden">
+      <span id="userName"></span>
+      <button id="logoutBtn" class="btn btn-ghost">Log out</button>
+    </div>
+  </header>
+
+  <!-- Auth view -->
+  <main id="authView" class="card auth-card">
+    <h2 id="authTitle">Log in</h2>
+    <form id="authForm">
+      <label id="nameField" class="hidden">
+        Name
+        <input type="text" id="nameInput" autocomplete="name" />
+      </label>
+      <label>
+        Email
+        <input type="email" id="emailInput" required autocomplete="email" />
+      </label>
+      <label>
+        Password
+        <input type="password" id="passwordInput" required autocomplete="current-password" />
+      </label>
+      <button type="submit" class="btn btn-primary" id="authSubmit">Log in</button>
+      <p class="switch-line">
+        <span id="switchText">New to TaskFlow?</span>
+        <a href="#" id="switchMode">Create an account</a>
+      </p>
+      <p id="authError" class="error hidden"></p>
+    </form>
+  </main>
+
+  <!-- Board view -->
+  <main id="boardView" class="hidden">
+    <form id="taskForm" class="card task-form">
+      <input type="text" id="titleInput" placeholder="What needs doing?" maxlength="140" required />
+      <select id="priorityInput">
+        <option value="low">Low priority</option>
+        <option value="medium" selected>Medium priority</option>
+        <option value="high">High priority</option>
+      </select>
+      <input type="date" id="dueInput" />
+      <button type="submit" class="btn btn-primary">Add task</button>
+    </form>
+
+    <section class="board">
+      <div class="column">
+        <h3>To do</h3>
+        <div id="col-todo" class="task-list"></div>
+      </div>
+      <div class="column">
+        <h3>In progress</h3>
+        <div id="col-in-progress" class="task-list"></div>
+      </div>
+      <div class="column">
+        <h3>Done</h3>
+        <div id="col-done" class="task-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
